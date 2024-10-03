@@ -57,9 +57,11 @@ Consideremos :
 * La variable Age
 
 ```{r PrimerGrafico}
+titanic$Survived <- as.factor(titanic$Survived)
+titanic$Pclass <-  as.factor(titanic$Pclass)
 ggplot2::ggplot(data = titanic, 
                 mapping = aes(Survived, fill=Survived))+
-  geom_bar()+
+  geom_bar(position = "dodge")+
   scale_fill_manual(values = c("red","blue"))
 ```
 
