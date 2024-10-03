@@ -10,11 +10,11 @@ output:
     number_sections: yes
     code_folding: hide
     code_download: yes
-    theme: yeti
+    theme: spacelab
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 # Introduccion
@@ -34,7 +34,7 @@ Usaremos la funcion logit para estas cuentas :
 $$P[Y=1|X=x] = \frac{exp(\beta^{T}x)}{1+ exp(\beta^{T}x)}$$
 
 # Ejemplo en R
-```{r CargaLibrerias,eval = TRUE,}
+```{r CargaLibrerias,eval = TRUE}
 library(ggplot2)
 library(corrplot)
 library(car)
@@ -43,6 +43,25 @@ library(PerformanceAnalytics)
 library(cowplot)
 ```
 
+```{r CargarDatos, include=TRUE}
+titanic <- read.csv("https://raw.githubusercontent.com/datasciencedojo/datasets/refs/heads/master/titanic.csv")
+colnames(titanic)
+```
+## Algunos graficos
+Consideremos :
+
+* La variable dependiente Survived
+
+* La variable Pclass 
+
+* La variable Age
+
+```{r PrimerGrafico}
+ggplot2::ggplot(data = titanic, 
+                mapping = aes(Survived, fill=Survived))+
+  geom_bar()+
+  scale_fill_manual(values = c("red","blue"))
+```
 
 
 
